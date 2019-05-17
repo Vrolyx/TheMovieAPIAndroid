@@ -1,5 +1,7 @@
 package avans.wesselvrolijks.themoviedb.api;
 
+import android.net.Uri;
+
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -40,6 +42,12 @@ public class ApiConnector {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public URL buildUrl()
+    {
+        Uri builtUrl = Uri.parse(this.baseUrl + this.apiKey).buildUpon()
+                .appendQueryParameter()
     }
 
     public JSONObject parseJson()
