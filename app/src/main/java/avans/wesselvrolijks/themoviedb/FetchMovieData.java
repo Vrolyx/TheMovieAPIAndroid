@@ -1,11 +1,25 @@
 package avans.wesselvrolijks.themoviedb;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
-public class FetchMovieData extends AsyncTask<String, Void, String[]> {
+import avans.wesselvrolijks.themoviedb.api.ApiConnector;
+
+public class FetchMovieData extends AsyncTask<String, String, String> {
+
+    private MainActivity mainActivity;
+
+//    protected void onPreExecute() {
+//        super.onPreExecute();
+//
+//        pd = new ProgressDialog(mainActivity);
+//        pd.setMessage("Please wait");
+//        pd.setCancelable(false);
+//        pd.show();
+//    }
 
     @Override
-    protected String[] doInBackground(String... strings) {
-        return new String[0];
+    protected String doInBackground(String... params) {
+        return new ApiConnector().connect();
     }
 }
