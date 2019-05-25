@@ -1,13 +1,16 @@
 package avans.wesselvrolijks.themoviedb.api;
 
 import android.net.Uri;
+import android.util.Log;
 
-import org.json.JSONObject;
-
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+
 
 /**
  * Created by WesselVrolijks on 25/04/2019.
@@ -15,24 +18,38 @@ import java.net.URLConnection;
 
 public class ApiConnector {
 
-    private String baseUrl = "https://api.themoviedb.org/3/movie/";
+    private String authority = "api.themoviedb.org";
+    private String apiVersion = "3";
     private String apiKey = "3629693dbbddf2430cd50ef1344f9aad";
     private URLConnection request;
 
     public void ApiConnector()
     {
-        this.connect(this.baseUrl, this.apiKey);
+
     }
 
-    public void connect(String baseUrl, String apiKey)
+    public String connect()
     {
-        // Combine baseurl and api key
-        String nUrl = baseUrl + "api_key=" + apiKey;
-
         try {
-            URL url = new URL(nUrl);
-            URLConnection request = url.openConnection();
-            this.request = request;
+            // Connect to url with build Url
+            URL url = new URL(this.buildUrl().toString());
+            URLConnection connection = url.openConnection();
+            connection.connect();
+
+            InputStream stream = connection.getInputStream();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
+
+            StringBuffer buffer = new StringBuffer();
+            String line = "";
+
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line+"\n");
+                Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
+
+            }
+
+            return buffer.toString();
         }
 
         catch (MalformedURLException e) {
@@ -42,16 +59,24 @@ public class ApiConnector {
         catch (IOException e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 
-    public URL buildUrl()
+    public Uri buildUrl()
     {
-        Uri builtUrl = Uri.parse(this.baseUrl + this.apiKey).buildUpon()
-                .appendQueryParameter()
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority(authority)
+                .appendPath(apiVersion)
+                .appendPath("discover")
+                .appendQueryParameter("api_key", apiKey);
+
+        return builder.build();
     }
 
-    public JSONObject parseJson()
-    {
-
-    }
+//    public JSONObject parseJson()
+//    {
+//
+//    }
 }
