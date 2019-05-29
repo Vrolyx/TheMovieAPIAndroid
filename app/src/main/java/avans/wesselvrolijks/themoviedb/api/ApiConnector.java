@@ -21,18 +21,24 @@ public class ApiConnector {
     private String authority = "api.themoviedb.org";
     private String apiVersion = "3";
     private String apiKey = "3629693dbbddf2430cd50ef1344f9aad";
-    private URLConnection request;
+    //private URLConnection request;
 
     public void ApiConnector()
     {
 
     }
 
-    public String connect()
+
+    /**
+     * Zoekt een film in de api op basis van naam.
+     * @param name
+     * @return
+     */
+    public String findByName(String name)
     {
         try {
             // Connect to url with build Url
-            URL url = new URL(this.buildUrl().toString());
+            URL url = new URL(this.buildUrl(name).toString());
             URLConnection connection = url.openConnection();
             connection.connect();
 
@@ -45,8 +51,7 @@ public class ApiConnector {
 
             while ((line = reader.readLine()) != null) {
                 buffer.append(line+"\n");
-                Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
-
+                Log.d("Response: ", "> " + line); // Log response
             }
 
             return buffer.toString();
@@ -63,20 +68,18 @@ public class ApiConnector {
         return null;
     }
 
-    public Uri buildUrl()
+    public Uri buildUrl(String name)
     {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("https")
                 .authority(authority)
                 .appendPath(apiVersion)
-                .appendPath("discover")
-                .appendQueryParameter("api_key", apiKey);
+                .appendPath("search")
+                .appendPath("movie")
+                .appendQueryParameter("api_key", apiKey)
+                .appendQueryParameter("query", name);
+        System.out.println(builder.build().toString());
 
         return builder.build();
     }
-
-//    public JSONObject parseJson()
-//    {
-//
-//    }
 }

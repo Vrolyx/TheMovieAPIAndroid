@@ -1,5 +1,6 @@
 package avans.wesselvrolijks.themoviedb.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -8,14 +9,14 @@ import java.util.Date;
 
 public class Movie {
 
-    private int id;
+    private String id;
     private String title;
     private String voteAverage;
     private String imagePath;
     private String description;
-    private Date releaseDate;
+    private SimpleDateFormat releaseDate;
 
-    public Movie(int id, String title, String voteAverage, String imagePath, String description, Date releaseDate) {
+    public Movie(String id, String title, String voteAverage, String imagePath, String description, SimpleDateFormat releaseDate) {
         this.id = id;
         this.title = title;
         this.voteAverage = voteAverage;
@@ -24,7 +25,7 @@ public class Movie {
         this.releaseDate = releaseDate;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -44,11 +45,11 @@ public class Movie {
         return description;
     }
 
-    public Date getReleaseDate() {
+    public SimpleDateFormat getReleaseDate() {
         return releaseDate;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -68,7 +69,7 @@ public class Movie {
         this.description = description;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(SimpleDateFormat releaseDate) {
         this.releaseDate = releaseDate;
     }
 }
