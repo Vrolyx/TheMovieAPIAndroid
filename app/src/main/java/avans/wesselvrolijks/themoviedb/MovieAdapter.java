@@ -69,7 +69,7 @@ public class MovieAdapter extends BaseAdapter {
         Movie movie = (Movie) movies.get(i);
 
         viewHolder.movieTitle.setText(movie.getTitle());
-        viewHolder.releaseDate.setText(movie.getReleaseDate().toString());
+        viewHolder.releaseDate.setText(movie.getReleaseDate());
 
         // Parse image using the Picasso library
         Picasso.get()

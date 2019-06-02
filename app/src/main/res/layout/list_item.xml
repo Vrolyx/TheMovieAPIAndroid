@@ -9,9 +9,9 @@
         android:id="@+id/photoPreview"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="MovieTitle"
+        android:text="ReleaseDate"
         app:layout_constraintStart_toStartOf="@+id/movieTitle"
         app:layout_constraintTop_toBottomOf="@+id/movieTitle" />
 
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="Title"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/movieTitlePlaceholder"
         app:layout_constraintTop_toTopOf="@+id/photoPreview" />
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:text="Movie Title:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,10 +52,9 @@
         android:id="@+id/releaseDatePlaceholder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:text="Release date: "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/photoPreview" />
+        app:layout_constraintStart_toStartOf="@+id/movieTitlePlaceholder"
+        app:layout_constraintTop_toTopOf="@+id/releaseDate" />
 
 
 </android.support.constraint.ConstraintLayout>

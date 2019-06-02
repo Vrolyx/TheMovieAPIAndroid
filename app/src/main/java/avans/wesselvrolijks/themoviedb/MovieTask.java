@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import avans.wesselvrolijks.themoviedb.api.ApiConnector;
 import avans.wesselvrolijks.themoviedb.entity.Movie;
@@ -66,7 +67,7 @@ public class MovieTask extends AsyncTask<String, String, String> {
                 String voteAverage = movie.getString("vote_average");
                 String imagePath = getImagePath(200, movie.getString("poster_path"));
                 String description = movie.getString("overview");
-                SimpleDateFormat releaseDate = new SimpleDateFormat(movie.getString("release_date"));
+                String releaseDate = movie.getString("release_date");
 
                 Movie m = new Movie(id, title, voteAverage, imagePath, description, releaseDate);
 
