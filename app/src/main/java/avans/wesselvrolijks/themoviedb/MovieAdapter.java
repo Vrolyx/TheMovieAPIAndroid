@@ -80,11 +80,11 @@ public class MovieAdapter extends BaseAdapter {
 
         if (i %2 == 1)
         {
-            view.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimary));
+            view.setBackgroundColor(mContext.getResources().getColor(R.color.listPrimary));
         }
         else
         {
-            view.setBackgroundColor(mContext.getResources().getColor(R.color.colorAccent));
+            view.setBackgroundColor(mContext.getResources().getColor(R.color.listSecondary));
         }
 
         return view;

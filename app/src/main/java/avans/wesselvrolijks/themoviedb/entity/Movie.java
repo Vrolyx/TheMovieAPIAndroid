@@ -1,13 +1,12 @@
 package avans.wesselvrolijks.themoviedb.entity;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.Serializable;
 
 /**
  * Created by WesselVrolijks on 25/04/2019.
  */
 
-public class Movie {
+public class Movie implements Serializable {
 
     private String id;
     private String title;
