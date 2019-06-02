@@ -21,16 +21,10 @@ public class ApiConnector {
     private String authority = "api.themoviedb.org";
     private String apiVersion = "3";
     private String apiKey = "3629693dbbddf2430cd50ef1344f9aad";
-    //private URLConnection request;
-
-    public void ApiConnector()
-    {
-
-    }
-
 
     /**
      * Zoekt een film in de api op basis van naam.
+     *
      * @param name
      * @return
      */
