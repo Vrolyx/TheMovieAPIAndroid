@@ -5,13 +5,11 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-
-import avans.wesselvrolijks.themoviedb.api.ApiConnector;
 import avans.wesselvrolijks.themoviedb.entity.Movie;
 
 public class MainActivity extends AppCompatActivity implements MovieTask.OnMovieAvailable {
@@ -59,6 +57,14 @@ public class MainActivity extends AppCompatActivity implements MovieTask.OnMovie
             }
         });
 
+        movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), DetailedActivity.class);
+                intent.putExtra("movie", movies.get(i));
+                startActivity(intent);
+            }
+        });
 
     }
 

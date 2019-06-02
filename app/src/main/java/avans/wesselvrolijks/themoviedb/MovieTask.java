@@ -40,6 +40,7 @@ public class MovieTask extends AsyncTask<String, String, String> {
 
     /**
      * Verwerk het resultaat van de doInBackground methode
+     *
      * @param response
      */
     protected void onPostExecute(String response){
