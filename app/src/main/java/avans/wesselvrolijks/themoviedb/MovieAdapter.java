@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 import avans.wesselvrolijks.themoviedb.entity.Movie;
 
-public class MovieAdapter extends BaseAdapter {
+public class MovieAdapter extends BaseAdapter
+{
 
     private Context mContext;
     private LayoutInflater mInflator;
@@ -47,10 +48,12 @@ public class MovieAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int i, View view, ViewGroup viewGroup)
+    {
         ViewHolder viewHolder;
 
-        if(view == null){
+        if(view == null)
+        {
             view = mInflator.inflate(R.layout.list_item, null);
 
             viewHolder = new ViewHolder();
@@ -65,7 +68,7 @@ public class MovieAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        // Vul viewholder
+        // Fill viewholder
         Movie movie = (Movie) movies.get(i);
 
         viewHolder.movieTitle.setText(movie.getTitle());
@@ -90,7 +93,11 @@ public class MovieAdapter extends BaseAdapter {
         return view;
     }
 
-    private static class ViewHolder {
+    /**
+     * Viewholder class for maintaining data
+     */
+    private static class ViewHolder
+    {
         public ImageView photoPreview;
         public TextView movieTitle;
         public TextView releaseDate;

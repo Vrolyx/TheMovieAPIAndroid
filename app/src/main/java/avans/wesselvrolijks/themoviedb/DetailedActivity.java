@@ -10,7 +10,8 @@ import com.squareup.picasso.Picasso;
 
 import avans.wesselvrolijks.themoviedb.entity.Movie;
 
-public class DetailedActivity extends AppCompatActivity {
+public class DetailedActivity extends AppCompatActivity
+{
     private ImageView fullImage;
     private TextView detailedTitle;
     private TextView detailedReleaseDate;
@@ -18,7 +19,8 @@ public class DetailedActivity extends AppCompatActivity {
     private TextView voteAverage;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailed_activity);
 

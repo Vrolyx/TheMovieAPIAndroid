@@ -6,7 +6,8 @@ import java.io.Serializable;
  * Created by WesselVrolijks on 25/04/2019.
  */
 
-public class Movie implements Serializable {
+public class Movie implements Serializable
+{
 
     private String id;
     private String title;
@@ -15,7 +16,8 @@ public class Movie implements Serializable {
     private String description;
     private String releaseDate;
 
-    public Movie(String id, String title, String voteAverage, String imagePath, String description, String releaseDate) {
+    public Movie(String id, String title, String voteAverage, String imagePath, String description, String releaseDate)
+    {
         this.id = id;
         this.title = title;
         this.voteAverage = voteAverage;
