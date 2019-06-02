@@ -8,21 +8,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import avans.wesselvrolijks.themoviedb.api.ApiConnector;
 import avans.wesselvrolijks.themoviedb.entity.Movie;
 
 public class MovieTask extends AsyncTask<String, String, String> {
 
+    // Callback
     private MainActivity mainActivity;
-
-    private MovieTask.OnMovieAvailable listener = null;
+    private OnMovieAvailable listener = null;
 
     private static final String TAG = MovieTask.class.getSimpleName();
 
-/*    public MovieTask(MovieTask.OnMovieAvailable listener){
+    public MovieTask(OnMovieAvailable listener, MainActivity mainActivity){
         this.listener = listener;
-    }*/
+        this.mainActivity = mainActivity;
+    }
 
 
     /**
@@ -63,11 +65,13 @@ public class MovieTask extends AsyncTask<String, String, String> {
                 String id = movie.getString("id");
                 String title = movie.getString("original_title");
                 String voteAverage = movie.getString("vote_average");
-                String imagePath = movie.getString("poster_path");
+                String imagePath = getImagePath(200, movie.getString("poster_path"));
                 String description = movie.getString("overview");
-                SimpleDateFormat releaseDate = new SimpleDateFormat(movie.getString("release_date"));
+                String releaseDate = movie.getString("release_date");
 
                 Movie m = new Movie(id, title, voteAverage, imagePath, description, releaseDate);
+
+                Log.i(TAG, "Movie added: " + m.getTitle());
 
                 listener.onMovieAvailable(m);
             }
@@ -79,6 +83,20 @@ public class MovieTask extends AsyncTask<String, String, String> {
         }
     }
 
+    /**
+     * Parse imgage from api to url
+     *
+     * @param size
+     * @param id
+     * @return
+     */
+    private String getImagePath(int size, String id){
+        return "https://image.tmdb.org/t/p/w" + size + "/" + id;
+    }
+
+    /**
+     * Callback interface
+     */
     public interface OnMovieAvailable{
         void onMovieAvailable(Movie movie);
     }

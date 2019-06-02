@@ -14,9 +14,9 @@ public class Movie {
     private String voteAverage;
     private String imagePath;
     private String description;
-    private SimpleDateFormat releaseDate;
+    private String releaseDate;
 
-    public Movie(String id, String title, String voteAverage, String imagePath, String description, SimpleDateFormat releaseDate) {
+    public Movie(String id, String title, String voteAverage, String imagePath, String description, String releaseDate) {
         this.id = id;
         this.title = title;
         this.voteAverage = voteAverage;
@@ -45,7 +45,7 @@ public class Movie {
         return description;
     }
 
-    public SimpleDateFormat getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
@@ -69,7 +69,7 @@ public class Movie {
         this.description = description;
     }
 
-    public void setReleaseDate(SimpleDateFormat releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 }
