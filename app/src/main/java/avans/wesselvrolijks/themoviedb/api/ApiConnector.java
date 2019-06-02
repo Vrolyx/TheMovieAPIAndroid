@@ -12,11 +12,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 
-/**
- * Created by WesselVrolijks on 25/04/2019.
- */
-
-public class ApiConnector {
+public class ApiConnector
+{
 
     private String authority = "api.themoviedb.org";
     private String apiVersion = "3";
@@ -62,7 +59,13 @@ public class ApiConnector {
         return null;
     }
 
-    public Uri buildUrl(String name)
+    /**
+     * Bouw url met naam als query
+     *
+     * @param name
+     * @return
+     */
+    private Uri buildUrl(String name)
     {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("https")

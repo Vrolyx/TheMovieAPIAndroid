@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity implements MovieTask.OnMovie
     private ListView movieList;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         // Enable network communication
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements MovieTask.OnMovie
             }
         });
 
+        // On item click, show detailed information about the selected movie
         movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -68,17 +70,23 @@ public class MainActivity extends AppCompatActivity implements MovieTask.OnMovie
 
     }
 
+    /**
+     * Add items to listView
+     *
+     * @param name
+     */
     private void addItems(String name)
     {
         movieAdapter.clearData();
         movieAdapter.notifyDataSetChanged();
 
-        MovieTask movieTask = new MovieTask(this, this);
+        MovieTask movieTask = new MovieTask(this);
         movieTask.execute(name);
     }
 
     @Override
-    public void onMovieAvailable(Movie movie) {
+    public void onMovieAvailable(Movie movie)
+    {
         movies.add(movie);
         movieAdapter.notifyDataSetChanged();
     }
